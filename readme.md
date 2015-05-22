@@ -1,4 +1,4 @@
-# Setting up Gulp, Bower, Bootstrap Sass or Less, & FontAwesome
+# Setting up Gulp, Bower, Bootstrap Sass, & FontAwesome
 
 ## Installation
 
