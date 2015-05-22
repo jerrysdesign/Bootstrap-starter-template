@@ -1,4 +1,5 @@
 var gulp = require('gulp'), 
+	slim = require('gulp-slim'),
 	sass = require('gulp-ruby-sass') ,
 	notify = require("gulp-notify") ,
 	bower = require('gulp-bower'),
@@ -6,13 +7,14 @@ var gulp = require('gulp'), 
 	connect = require('gulp-connect');
 
 var config = {
-	 sassPath: './resources/sass',
-	 bowerDir: './bower_components' 
+	slimPath: './resources/slim',
+	sassPath: './resources/sass',
+	bowerDir: './bower_components' 
 }
 
 gulp.task('bower', function() { 
 	return bower()
-		 .pipe(gulp.dest(config.bowerDir)) 
+		.pipe(gulp.dest(config.bowerDir)) 
 });
 
 gulp.task('icons', function() { 
@@ -20,18 +22,26 @@ gulp.task('icons', function() { 
 		.pipe(gulp.dest('./public/fonts')); 
 });
 
+gulp.task('slim', function(){
+	gulp.src(config.slimPath + '/*.slim')
+		.pipe(slim({
+			pretty: true
+		}))
+		.pipe(gulp.dest("./public"));
+});
+
 gulp.task('css', function() { 
 	return gulp.src(config.sassPath + '/style.scss')
-		 .pipe(sass({
-			 style: 'compressed',
-			 loadPath: [
-				 './resources/sass',
-				 config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
-				 config.bowerDir + '/fontawesome/scss',
-			 ]
+		.pipe(sass({
+			style: 'compressed',
+			loadPath: [
+				'./resources/sass',
+				config.bowerDir + '/bootstrap-sass-official/assets/stylesheets',
+				config.bowerDir + '/fontawesome/scss',
+			]
 		 }) 
 			.on("error", notify.onError(function (error) {
-				 return "Error: " + error.message;
+				return "Error: " + error.message;
 			}))) 
 		.pipe(gulp.dest('./public/css'))
 		.pipe(connect.reload()); 
@@ -51,4 +61,4 @@ gulp.task('webserver', function() {
 	gulp.watch(config.sassPath + '/*.scss', ['css']); 
 });
 
-gulp.task('default', ['bower', 'icons', 'css', 'webserver', 'watch']);
+gulp.task('default', ['bower', 'icons', 'slim', 'css', 'webserver', 'watch']);
