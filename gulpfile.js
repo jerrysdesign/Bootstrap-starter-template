@@ -2,7 +2,8 @@ var gulp = require('gulp'), 
 	less = require('gulp-less') ,
 	notify = require("gulp-notify") ,
 	bower = require('gulp-bower'),
-	webserver = require('gulp-webserver');
+	webserver = require('gulp-webserver'),
+	connect = require('gulp-connect');
 
 
 var config = {
@@ -32,7 +33,8 @@ gulp.task('css', function() { 
 			.on("error", notify.onError(function (error) {
 				 return "Error: " + error.message;
 			}))) 
-		.pipe(gulp.dest('./public/css')); 
+		.pipe(gulp.dest('./public/css'))
+		.pipe(connect.reload()); 
 });
 
 gulp.task('webserver', function() {
@@ -47,7 +49,7 @@ gulp.task('webserver', function() {
 
 // Rerun the task when a file changes
  gulp.task('watch', function() {
-	gulp.watch(config.sassPath + '/**/*.less', ['css']); 
+	gulp.watch(config.lessPath + '/*.less', ['css']); 
 });
 
-gulp.task('default', ['bower', 'icons', 'css', 'webserver']);
+gulp.task('default', ['bower', 'icons', 'css', 'webserver', 'watch']);
