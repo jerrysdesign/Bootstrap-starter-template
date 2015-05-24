@@ -7,6 +7,10 @@ var gulp      = require('gulp'), 
     webserver = require('gulp-webserver'),
     connect   = require('gulp-connect');
 
+// Ignore everything that begins with underscore
+var hidden_files = '**/_*.*';
+var ignored_files = '!'+hidden_files;
+
 // Sources config
 var source = {
   resource : './resources',
