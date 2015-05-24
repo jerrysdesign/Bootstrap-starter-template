@@ -1,20 +1,20 @@
 {
-  "name": "Bootstrap starter template / gulp-bower-bootstrap-fontawesome",
-  "version": "0.0.0",
-  "homepage": "https://github.com/jerrysdesign/Bootstrap-starter-template",
-  "authors": [
-    "Jerry Hung <jerry@junnnnj.com>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "bootstrap-sass-official": "~3.3.3",
-    "fontawesome": "~4.3.0"
-  }
+	"name": "Bootstrap starter template / gulp-bower-bootstrap-fontawesome",
+	"version": "0.0.0",
+	"homepage": "https://github.com/jerrysdesign/Bootstrap-starter-template",
+	"authors": [
+		"Jerry Hung <jerry@junnnnj.com>"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"bootstrap-sass-official": "~3.3.3",
+		"fontawesome": "~4.3.0"
+	}
 }
